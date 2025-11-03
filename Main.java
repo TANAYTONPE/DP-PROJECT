@@ -69,22 +69,44 @@
 // // (Paste all the other classes from the previous file below here)
 // // e.g., interface DeliveryStrategy, class BikeDeliveryStrategy, etc.
 // // ------------------------------------------------------------------
-import javax.swing.SwingUtilities;
+// import javax.swing.SwingUtilities;
 
+// /**
+//  * This is the new Main class.
+//  * Its ONLY job is to launch the GUI application safely.
+//  */
+// public class Main {
+//     public static void main(String[] args) {
+//         // Run the GUI creation on the Event Dispatch Thread (EDT)
+//         // This is the standard, safe way to start a Swing application.
+//         SwingUtilities.invokeLater(new Runnable() {
+//             @Override
+//             public void run() {
+//                 // This creates an instance of our GUI class
+//                 new FoodAppGUI();
+//             }
+//         });
+//     }
+// }
 /**
- * This is the new Main class.
- * Its ONLY job is to launch the GUI application safely.
+ * Main class to run a simple, hard-coded demo.
+ * This is perfect for the presentation to show the patterns clearly.
  */
 public class Main {
     public static void main(String[] args) {
-        // Run the GUI creation on the Event Dispatch Thread (EDT)
-        // This is the standard, safe way to start a Swing application.
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                // This creates an instance of our GUI class
-                new FoodAppGUI();
-            }
-        });
+        // The client (your presentation) only interacts with the Facade.
+        OrderFacade orderFacade = new OrderFacade();
+
+        // --- Scenario 1: A simple order ---
+        System.out.println("=== DEMO SCENARIO 1: SMALL ORDER ===");
+        // User orders 1 Burger to "123 Java Lane"
+        orderFacade.placeOrder("Burger", "123 Java Lane", 1);
+
+        System.out.println("\n"); // Add a space
+
+        // --- Scenario 2: A large pizza order ---
+        System.out.println("=== DEMO SCENARIO 2: LARGE ORDER ===");
+        // User orders 6 Pizzas to "404 Design Pattern St"
+        orderFacade.placeOrder("Pizza", "404 Design Pattern St", 6);
     }
 }
